@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logs</title>
+</head>
+<body>
+    <h1>Real-Time Logs</h1>
+    <pre id="log-container"></pre>
+
+    <script>
+        async function fetchLogs() {
+            const response = await fetch('/logs');
+            const logs = await response.text();
+            document.getElementById('log-container').innerText = logs;
+        }
+
+        setInterval(fetchLogs, 2000); // Fetch logs every 2 seconds
+        fetchLogs(); // Initial fetch
+    </script>
+</body>
+</html>
